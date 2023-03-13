@@ -52,9 +52,9 @@ export const MarketProvider = ({ children }) => {
     });
   }, []);
 
-  // const decryptedData = manager.decrypt(
-  //   'yvpkyomYHwtYMbCc9wOHqMSqxnLgtMGyipukFngYo/zvY6qmFwvEcl+D5y0PZaLm'
-  // );
+  const decryptedData = manager.decrypt(
+    'yvpkyomYHwtYMbCc9wOHqMSqxnLgtMGyipukFngYo/zvY6qmFwvEcl+D5y0PZaLm'
+  );
   // console.log('decryptedData', decryptedData);
 
   return (
