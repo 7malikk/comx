@@ -4,8 +4,6 @@ import Manager from '../lib/encryption';
 const MarketContext = createContext();
 
 export const MarketProvider = ({ children }) => {
-  // const [trades, setTrades] = useState({});
-  // const [client, setClient] = useState({});
   const manager = new Manager({
     key: process.env.KEY,
     vector: process.env.VECTOR,
@@ -22,11 +20,11 @@ export const MarketProvider = ({ children }) => {
 
     tradesSocket.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
-      console.log('TradeSocket data:', data);
+      console.log('TradeSocket data recieved');
     });
 
     tradesSocket.addEventListener('error', (event) => {
-      console.error('TradeSocket error:', event);
+      console.log('TradeSocket error');
     });
 
     tradesSocket.addEventListener('close', (event) => {
@@ -42,11 +40,11 @@ export const MarketProvider = ({ children }) => {
 
     clientSocket.addEventListener('message', (event) => {
       const data = JSON.parse(event.data);
-      console.log('ClientSocket data:', data);
+      console.log('ClientSocket data recieved');
     });
 
     clientSocket.addEventListener('error', (event) => {
-      console.error('ClientSocket error:', event);
+      console.log('ClientSocket error');
     });
 
     clientSocket.addEventListener('close', (event) => {
@@ -54,10 +52,10 @@ export const MarketProvider = ({ children }) => {
     });
   }, []);
 
-  const decryptedData = manager.decrypt(
-    'yvpkyomYHwtYMbCc9wOHqMSqxnLgtMGyipukFngYo/zvY6qmFwvEcl+D5y0PZaLm'
-  );
-  console.log('decryptedData', decryptedData);
+  // const decryptedData = manager.decrypt(
+  //   'yvpkyomYHwtYMbCc9wOHqMSqxnLgtMGyipukFngYo/zvY6qmFwvEcl+D5y0PZaLm'
+  // );
+  // console.log('decryptedData', decryptedData);
 
   return (
     <MarketContext.Provider value="market">{children}</MarketContext.Provider>
