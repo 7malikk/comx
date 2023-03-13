@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useEffect } from 'react';
-import Manager from '../lib/encryption';
+// import Manager from '../lib/encryption';
 
 const MarketContext = createContext();
 
 export const MarketProvider = ({ children }) => {
-  const manager = new Manager({
-    key: process.env.KEY,
-    vector: process.env.VECTOR,
-  });
+  // const manager = new Manager({
+  //   key: process.env.KEY,
+  //   vector: process.env.VECTOR,
+  // });
 
   useEffect(() => {
     const tradesSocket = new WebSocket(
