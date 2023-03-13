@@ -1,22 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
-import { useMarketContext } from '../context/MarketContext.js';
+import { AreaChart, Area } from 'recharts';
 
 const CardsSection = () => {
-  // const data = useMarketContext();
-  // console.log(data);
-
   const screenSize = window.innerWidth;
-  console.log(screenSize);
   const medium = 1024;
   const large = 1440;
   const fourK = 2560;

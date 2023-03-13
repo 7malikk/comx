@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import Manager from '../lib/encryption';
 
 const MarketContext = createContext();
 
 export const MarketProvider = ({ children }) => {
-  const [trades, setTrades] = useState({});
-  const [client, setClient] = useState({});
+  // const [trades, setTrades] = useState({});
+  // const [client, setClient] = useState({});
   const manager = new Manager({
     key: process.env.KEY,
     vector: process.env.VECTOR,
