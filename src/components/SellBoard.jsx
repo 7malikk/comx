@@ -16,90 +16,57 @@ const SellBoard = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
+            <td>Soybeans (SSBS)</td>
+            <td>267</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
           </tr>
           <tr>
-            <td>Berglunds snabbköp</td>
-            <td>Christina Berglund</td>
-            <td>Sweden</td>
+            <td>Paddy Rice (SPRL)</td>
+            <td>353</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
           </tr>
           <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
+            <td>Maize (SMAZ)</td>
+            <td>2035</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
           </tr>
           <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
+            <td>Sorghum (SSGM)</td>
+            <td>353</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
           </tr>
           <tr>
-            <td>Island Trading</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
+            <td>Fair Trade ETC (FETC)</td>
+            <td>2535</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
           </tr>
           <tr>
-            <td>Königlich Essen</td>
-            <td>Philip Cramer</td>
-            <td>Germany</td>
+            <td>Soybeans (SSBS)</td>
+            <td>143</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
           </tr>
           <tr>
-            <td>Laughing Bacchus Winecellars</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Magazzini Alimentari Riuniti</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>North/South</td>
-            <td>Simon Crowther</td>
-            <td>UK</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Paris spécialités</td>
-            <td>Marie Bertrand</td>
-            <td>France</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Paris spécialités</td>
-            <td>Marie Bertrand</td>
-            <td>France</td>
+            <td>Soybeans (SSBS)</td>
+            <td>206</td>
+            <td>6,741.39</td>
             <td>
               <p className="red">Sell</p>
             </td>
@@ -126,6 +93,9 @@ const Wrapper = styled.section`
   table.boardTable {
     border-collapse: collapse;
     width: 100%;
+    th {
+      border-top: 1px solid #ddd;
+    }
     td,
     th {
       padding: 8px;
@@ -152,6 +122,25 @@ const Wrapper = styled.section`
     }
     tbody tr td:nth-last-child(2) {
       color: red;
+    }
+  }
+  @media (min-width: 1241px) {
+    table.boardTable {
+      th,
+      td {
+        font-size: medium;
+      }
+    }
+  }
+  @media (min-width: 1441px) {
+    h4 {
+      font-size: xx-large;
+    }
+    table.boardTable {
+      th,
+      td {
+        font-size: x-large;
+      }
     }
   }
 `;

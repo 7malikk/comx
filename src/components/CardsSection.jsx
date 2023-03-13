@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {
   AreaChart,
@@ -9,8 +9,17 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { useMarketContext } from '../context/MarketContext.js';
 
 const CardsSection = () => {
+  // const data = useMarketContext();
+  // console.log(data);
+
+  const screenSize = window.innerWidth;
+  console.log(screenSize);
+  const medium = 1024;
+  const large = 1440;
+  const fourK = 2560;
   return (
     <Wrapper>
       <div className="cash-card card">
@@ -25,8 +34,24 @@ const CardsSection = () => {
           </div>
           <div className="chart">
             <AreaChart
-              width={100}
-              height={50}
+              width={
+                screenSize === fourK
+                  ? 500
+                  : screenSize === large
+                  ? 200
+                  : screenSize === medium
+                  ? 118
+                  : 100
+              }
+              height={
+                screenSize === fourK
+                  ? 90
+                  : screenSize === large
+                  ? 70
+                  : screenSize === medium
+                  ? 60
+                  : 50
+              }
               data={data}
               margin={{
                 top: 6,
@@ -56,8 +81,24 @@ const CardsSection = () => {
           </div>
           <div className="chart">
             <AreaChart
-              width={100}
-              height={50}
+              width={
+                screenSize === fourK
+                  ? 500
+                  : screenSize === large
+                  ? 200
+                  : screenSize === medium
+                  ? 150
+                  : 100
+              }
+              height={
+                screenSize === fourK
+                  ? 90
+                  : screenSize === large
+                  ? 70
+                  : screenSize === medium
+                  ? 60
+                  : 50
+              }
               data={data}
               margin={{
                 top: 6,
@@ -87,8 +128,24 @@ const CardsSection = () => {
           </div>
           <div className="chart">
             <AreaChart
-              width={100}
-              height={50}
+              width={
+                screenSize === fourK
+                  ? 500
+                  : screenSize === large
+                  ? 200
+                  : screenSize === medium
+                  ? 150
+                  : 100
+              }
+              height={
+                screenSize === fourK
+                  ? 90
+                  : screenSize === large
+                  ? 70
+                  : screenSize === medium
+                  ? 60
+                  : 50
+              }
               data={data}
               margin={{
                 top: 6,
@@ -113,15 +170,15 @@ const CardsSection = () => {
 export default CardsSection;
 
 const Wrapper = styled.section`
-  /* width: 90%; */
   display: grid;
-  grid-template-columns: repeat(3, 2fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2, 2fr);
+  row-gap: 0.5rem;
+  column-gap: 1rem;
   .card {
     display: flex;
     flex-direction: column;
     padding-inline: 0.6rem;
-    padding-block: 0.8rem;
+    padding-block: 0.3rem;
     border-radius: 0.5rem;
     background: #ffffff;
     .card-split {
@@ -129,6 +186,9 @@ const Wrapper = styled.section`
       justify-content: space-between;
       margin-block: 0.2rem;
       .amount {
+        h4 {
+          font-size: large;
+        }
         .status {
           display: flex;
           justify-content: space-between;
@@ -144,6 +204,62 @@ const Wrapper = styled.section`
           div.increment {
             background: #d1ffccac;
             color: green;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 769px) {
+    grid-template-columns: repeat(3, 2fr);
+    gap: 1rem;
+    .card {
+      padding-block: 0.8rem;
+      .card-split {
+        .amount {
+          h4 {
+            font-size: x-large;
+          }
+          .status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            div {
+              background: #ffccccac;
+              color: red;
+              padding-inline: 0.6rem;
+              /* padding-block: 0.2rem; */
+              margin-right: 0.5rem;
+              border-radius: 0.3rem;
+            }
+            div.increment {
+              background: #d1ffccac;
+              color: green;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1441px) {
+    .card {
+      padding-inline: 0.9rem;
+      padding-block: 1.5rem;
+      h5 {
+        font-size: x-large;
+      }
+      .card-split {
+        margin-block: 1rem;
+        .amount {
+          h4 {
+            font-size: xx-large;
+          }
+          .status {
+            margin-top: 1rem;
+            font-size: large;
+            div {
+              padding-inline: 0.6rem;
+              margin-right: 0.5rem;
+            }
           }
         }
       }

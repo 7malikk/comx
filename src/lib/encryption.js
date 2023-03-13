@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 export default class Manager {
   constructor({ key: t, vector: r }) {
-    (this.encrypt = (e) => do_encrypt_data(e, t, r)),
-      (this.decrypt = (e) => do_decrypt_data(e, t, r));
+    this.encrypt = (e) => do_encrypt_data(e, t, r);
+    this.decrypt = (e) => do_decrypt_data(e, t, r);
   }
 }
 function do_encrypt_data(t, r, e) {

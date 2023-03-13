@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../assets/comx-logo.png';
+import xlogo from '../assets/x.png';
 import {
   TbLayoutDashboard,
   TbHomeStats,
@@ -14,7 +15,8 @@ import { BiLogOut } from 'react-icons/bi';
 const Sidebar = () => {
   return (
     <Wrapper>
-      <img src={logo} alt="comx" />
+      <img className="logo" src={logo} alt="comx" />
+      <img className="xlogo" src={xlogo} alt="comx" />
       <div className="icons">
         <ul className="sidebar-icons">
           <li>
@@ -62,8 +64,11 @@ const Wrapper = styled.aside`
   flex-direction: column;
   padding: 0.8rem;
   img {
-    width: 3rem;
+    width: 1.8rem;
     align-self: center;
+  }
+  img.logo {
+    display: none;
   }
   .icons {
     height: 93vh;
@@ -84,10 +89,7 @@ const Wrapper = styled.aside`
       display: inline-block;
     }
     li.active {
-      background-color: #b4e0f140;
       color: #d83430;
-      padding-inline: 0.5rem;
-      border-radius: 10%;
     }
     li:hover .tooltip {
       visibility: visible;
@@ -106,6 +108,61 @@ const Wrapper = styled.aside`
       z-index: 1;
       top: 1px;
       left: 175%;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    img {
+      width: 3rem;
+      align-self: center;
+    }
+    img.logo {
+      display: block;
+    }
+    img.xlogo {
+      display: none;
+    }
+    .sidebar-icons,
+    .footer-icons {
+      li {
+        font-size: 2rem;
+      }
+      li.active {
+        background-color: #b4e0f140;
+        color: #d83430;
+        padding-inline: 0.5rem;
+        border-radius: 10%;
+      }
+      li .tooltip {
+        font-size: 1rem;
+        top: 5px;
+        left: 170%;
+      }
+    }
+  }
+  @media (min-width: 1441px) {
+    img {
+      width: 7rem;
+      align-self: center;
+    }
+    img.logo {
+      display: block;
+    }
+    img.xlogo {
+      display: none;
+    }
+    .sidebar-icons,
+    .footer-icons {
+      li {
+        font-size: 3rem;
+        margin-top: 1rem;
+      }
+      li .tooltip {
+        font-size: 2rem;
+        top: 5px;
+        left: 186%;
+        width: 12rem;
+      }
     }
   }
 `;

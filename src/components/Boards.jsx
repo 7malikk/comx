@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import BuyBoard from './BuyBoard';
 import SellBoard from './SellBoard';
 import TradeLog from './TradeLog';
+import { useMarketContext } from '../context/MarketContext';
 
 const Boards = () => {
+  const data = useMarketContext();
+  console.log('boards', data);
   return (
     <Wrapper>
       <nav>
@@ -46,6 +49,7 @@ const Wrapper = styled.section`
       display: flex;
       justify-content: start;
       border-bottom: 1px solid #e0e0e0;
+      font-size: small;
       li {
         transition: all 0.9s ease-in-out;
         margin-left: 1rem;
@@ -85,13 +89,14 @@ const Wrapper = styled.section`
     }
   }
   .boards {
-    max-height: calc(100vh - (50vh + 7rem));
+    max-height: calc(100vh - (50vh + 10rem));
     overflow-y: scroll;
     padding-block: 1rem;
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     grid-template-areas:
-      'buyboard sellboard'
+      'buyboard buyboard'
+      'sellboard sellboard'
       'tradelog tradelog';
     gap: 2rem;
     width: 100%;
@@ -99,5 +104,45 @@ const Wrapper = styled.section`
     overflow-y: scroll;
     padding-right: 17px;
     box-sizing: content-box;
+  }
+  @media (min-width: 769px) {
+    .boards {
+      max-height: calc(100vh - (50vh + 5rem));
+      grid-template-areas:
+        'buyboard sellboard'
+        'tradelog tradelog';
+    }
+  }
+  @media (min-width: 1025px) {
+    nav {
+      ul {
+        font-size: medium;
+        border-bottom: 2px solid #e0e0e0;
+        li.active {
+          border-bottom: 2px solid #ff3b3b;
+        }
+        li.li:hover {
+          border-bottom: 2px solid black;
+        }
+      }
+    }
+    .boards {
+      max-height: calc(100vh - (50vh + 1.1rem));
+    }
+  }
+  @media (min-width: 1441px) {
+    nav {
+      ul {
+        font-size: xx-large;
+        li.li {
+          div.badge {
+            font-size: x-large;
+          }
+        }
+      }
+    }
+    .boards {
+      max-height: calc(100vh - (50vh + -8.9rem));
+    }
   }
 `;

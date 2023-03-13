@@ -2,17 +2,15 @@ import React from 'react';
 import {
   Boards,
   PageTitle,
-  Marquee,
+  Marque,
   Sidebar,
   CardsSection,
 } from '../components';
 import styled from 'styled-components';
-import MarketContext from '../context/MarketContext';
 
 const MarketPage = () => {
   return (
     <Wrapper>
-      <MarketContext />
       <Sidebar />
       <div className="main-content">
         <div className="top-section">
@@ -20,7 +18,7 @@ const MarketPage = () => {
           <CardsSection />
           <Boards />
         </div>
-        <Marquee />
+        <Marque />
       </div>
     </Wrapper>
   );

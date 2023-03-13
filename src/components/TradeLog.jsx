@@ -18,121 +18,67 @@ const TradeLog = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Soybeans (SSBS)</td>
+            <td>X-Traded</td>
+            <td>Sell </td>
+            <td>1792.65</td>
+            <td>2000</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Paddy Rice (SPRL)</td>
+            <td>X-Traded</td>
+            <td>Sell </td>
+            <td>1792.65</td>
+            <td>86</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Maize (SMAZ)</td>
+            <td>OTC</td>
+            <td>Buy </td>
+            <td>1792.65</td>
+            <td>2000</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Sorghum (SSGM)</td>
+            <td>FI</td>
+            <td>Buy </td>
+            <td>1792.65</td>
+            <td>2000</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Fair Trade ETC (FETC)</td>
+            <td>FI</td>
+            <td>Buy</td>
+            <td>1792.65</td>
+            <td>2000</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Soybeans (SSBS)</td>
+            <td>X-Traded</td>
+            <td>Sell </td>
+            <td>1792.65</td>
+            <td>2000</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
-            <td>Germany</td>
+            <td>Soybeans (SSBS)</td>
+            <td>Derivatives</td>
+            <td>Sell </td>
+            <td>1792.65</td>
+            <td>2000</td>
+            <td>17th Oct, 2020</td>
+            <td>07:38</td>
           </tr>
         </tbody>
       </table>
@@ -157,6 +103,9 @@ const Wrapper = styled.section`
   table.boardTable {
     border-collapse: collapse;
     width: 100%;
+    th {
+      border-top: 1px solid #ddd;
+    }
     td,
     th {
       padding: 8px;
@@ -168,6 +117,25 @@ const Wrapper = styled.section`
       padding-bottom: 7px;
       text-align: left;
       color: #797979;
+    }
+  }
+  @media (min-width: 1241px) {
+    table.boardTable {
+      th,
+      td {
+        font-size: medium;
+      }
+    }
+  }
+  @media (min-width: 1441px) {
+    h4 {
+      font-size: xx-large;
+    }
+    table.boardTable {
+      th,
+      td {
+        font-size: x-large;
+      }
     }
   }
 `;
