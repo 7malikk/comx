@@ -19,7 +19,7 @@ export const MarketProvider = ({ children }) => {
     });
 
     tradesSocket.addEventListener('message', (event) => {
-      const data = JSON.parse(event.data);
+      // const data = JSON.parse(event.data);
       console.log('TradeSocket data recieved');
     });
 
@@ -39,7 +39,7 @@ export const MarketProvider = ({ children }) => {
     });
 
     clientSocket.addEventListener('message', (event) => {
-      const data = JSON.parse(event.data);
+      // const data = JSON.parse(event.data);
       console.log('ClientSocket data recieved');
     });
 
@@ -52,9 +52,9 @@ export const MarketProvider = ({ children }) => {
     });
   }, []);
 
-  const decryptedData = manager.decrypt(
-    'yvpkyomYHwtYMbCc9wOHqMSqxnLgtMGyipukFngYo/zvY6qmFwvEcl+D5y0PZaLm'
-  );
+  // const decryptedData = manager.decrypt(
+  //   'yvpkyomYHwtYMbCc9wOHqMSqxnLgtMGyipukFngYo/zvY6qmFwvEcl+D5y0PZaLm'
+  // );
   // console.log('decryptedData', decryptedData);
 
   return (
