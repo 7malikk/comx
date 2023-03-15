@@ -49,28 +49,28 @@ export const MarketProvider = ({ children }) => {
   useEffect(() => {
     getData(liveTicketUrl);
     getProducts(productViewUrl);
-    if (JSON.parse(localStorage.getItem('productView')).length > 0) {
-      const newDec = localStorage.getItem('productView');
-      const parsedData = JSON.parse(newDec);
-      const decryptedData = parsedData.map((item) => {
-        manager.decrypt(item.board);
-        return manager.decrypt(item);
-      });
-      setProducts(decryptedData);
-    }
+    // if (JSON.parse(localStorage.getItem('productView').length > 0)) {
+    //   const newDec = localStorage.getItem('productView');
+    //   const parsedData = JSON.parse(newDec);
+    //   const decryptedData = parsedData.map((item) => {
+    //     manager.decrypt(item.board);
+    //     return manager.decrypt(item);
+    //   });
+    //   setProducts(decryptedData);
+    // }
 
-    if (JSON.parse(localStorage.getItem('liveTIcket')).length > 0) {
-      const newLive = localStorage.getItem('liveTIcket');
-      const parsedLive = JSON.parse(newLive);
-      const decryptedLive = parsedLive.map((item) => {
-        item['transaction_fee_configurations'].map((other) =>
-          manager.decrypt(other)
-        );
-        return manager.decrypt(item);
-      });
+    // if (JSON.parse(localStorage.getItem('liveTIcket').length > 0)) {
+    //   const newLive = localStorage.getItem('liveTIcket');
+    //   const parsedLive = JSON.parse(newLive);
+    //   const decryptedLive = parsedLive.map((item) => {
+    //     item['transaction_fee_configurations'].map((other) =>
+    //       manager.decrypt(other)
+    //     );
+    //     return manager.decrypt(item);
+    //   });
 
-      setLiveTicker(decryptedLive);
-    }
+    //   setLiveTicker(decryptedLive);
+    // }
     // eslint-disable-next-line
   }, []);
 
@@ -92,16 +92,16 @@ export const MarketProvider = ({ children }) => {
 
       setTradesData(data.messages);
     });
-    if (JSON.parse(localStorage.getItem('tradesFromWSS')).length > 0) {
-      const newDec = localStorage.getItem('tradesFromWSS');
-      const parsedData = JSON.parse(newDec);
-      for (let msg of parsedData.messages) {
-        manager.decrypt(msg.client);
-        manager.decrypt(msg);
-      }
-      manager.decrypt(parsedData);
-      setTradesData(parsedData.messages);
-    }
+    // if (JSON.parse(localStorage.getItem('tradesFromWSS').length > 0)) {
+    //   const newDec = localStorage.getItem('tradesFromWSS');
+    //   const parsedData = JSON.parse(newDec);
+    //   for (let msg of parsedData.messages) {
+    //     manager.decrypt(msg.client);
+    //     manager.decrypt(msg);
+    //   }
+    //   manager.decrypt(parsedData);
+    //   setTradesData(parsedData.messages);
+    // }
 
     tradesSocket.addEventListener('error', (event) => {
       console.log('TradeSocket error');
@@ -133,21 +133,21 @@ export const MarketProvider = ({ children }) => {
       setClientData(data);
     });
 
-    if (JSON.parse(localStorage.getItem('clientSocket')).length > 0) {
-      const newClient = localStorage.getItem('clientSocket');
-      const parsedClientData = JSON.parse(newClient);
-      manager.decrypt(parsedClientData.wallets);
-      manager.decrypt(parsedClientData.portfolio);
-      parsedClientData.portfolio.map((item) => manager.decrypt(item));
-      manager.decrypt(parsedClientData.csd);
-      parsedClientData.csd.map((item) => manager.decrypt(item));
-      manager.decrypt(parsedClientData.stock_covers);
-      parsedClientData.stock_covers.map((item) => manager.decrypt(item));
-      manager.decrypt(parsedClientData.cash_cover);
+    // if (JSON.parse(localStorage.getItem('clientSocket').length > 0)) {
+    //   const newClient = localStorage.getItem('clientSocket');
+    //   const parsedClientData = JSON.parse(newClient);
+    //   manager.decrypt(parsedClientData.wallets);
+    //   manager.decrypt(parsedClientData.portfolio);
+    //   parsedClientData.portfolio.map((item) => manager.decrypt(item));
+    //   manager.decrypt(parsedClientData.csd);
+    //   parsedClientData.csd.map((item) => manager.decrypt(item));
+    //   manager.decrypt(parsedClientData.stock_covers);
+    //   parsedClientData.stock_covers.map((item) => manager.decrypt(item));
+    //   manager.decrypt(parsedClientData.cash_cover);
 
-      manager.decrypt(parsedClientData);
-      setClientData(parsedClientData);
-    }
+    //   manager.decrypt(parsedClientData);
+    //   setClientData(parsedClientData);
+    // }
 
     clientSocket.addEventListener('error', (event) => {
       console.log('ClientSocket error');
