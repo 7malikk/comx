@@ -9,7 +9,9 @@ const BuyBoard = () => {
 
   const getCommName = (code) => {
     const commodity = products.find((product) => product.code === code);
-    return `${commodity?.name} (${code})`;
+    return `${
+      commodity?.name === 'undefined' ? code : commodity?.name
+    } (${code})`;
   };
 
   const getBuyProducts = () => {
