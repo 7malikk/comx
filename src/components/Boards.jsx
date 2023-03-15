@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import BuyBoard from './BuyBoard';
 import SellBoard from './SellBoard';
 import TradeLog from './TradeLog';
+
 import { useMarketContext } from '../context/MarketContext';
 
 const Boards = () => {
-  const data = useMarketContext();
-  console.log('boards', data);
+  const { tradesData } = useMarketContext();
+  if (tradesData.length === 0) {
+    return <div className="loader"> </div>;
+  }
   return (
     <Wrapper>
       <nav>

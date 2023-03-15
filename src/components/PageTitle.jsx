@@ -5,8 +5,11 @@ import {
   MdOutlineSettingsInputComposite,
 } from 'react-icons/md';
 import styled from 'styled-components';
+import { useMarketContext } from '../context/MarketContext';
 
 const PageTitle = () => {
+  const {} = useMarketContext();
+
   return (
     <Wrapper>
       <nav>
@@ -41,7 +44,6 @@ const PageTitle = () => {
                 <ul>
                   <li>
                     <input
-                      checked
                       type="checkbox"
                       id="x-traded"
                       name="x-traded"
@@ -72,13 +74,7 @@ const PageTitle = () => {
                 <h5>Product</h5>
                 <ul>
                   <li>
-                    <input
-                      checked
-                      type="checkbox"
-                      id="all"
-                      name="all"
-                      value="all"
-                    />
+                    <input type="checkbox" id="all" name="all" value="all" />
                     <label htmlFor="all">All</label>
                   </li>
                   <li>

@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useMarketContext } from '../context/MarketContext';
+import { formatNum } from '../helpers';
 
 const SellBoard = () => {
+  const { products, tradesData } = useMarketContext();
+  const [sellProducts, setSellProducts] = useState([]);
+
+  const getCommName = (code) => {
+    const commodity = products.find((product) => product.code === code);
+    return `${commodity?.name} (${code})`;
+  };
+
+  const getSellProducts = () => {
+    setSellProducts(tradesData.filter((trade) => trade.order_type === 'Sell'));
+  };
+
+  useEffect(() => {
+    getSellProducts();
+  }, [tradesData]);
   return (
     <Wrapper>
       <h4>Sell Board</h4>
@@ -15,62 +32,18 @@ const SellBoard = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Soybeans (SSBS)</td>
-            <td>267</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Paddy Rice (SPRL)</td>
-            <td>353</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Maize (SMAZ)</td>
-            <td>2035</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Sorghum (SSGM)</td>
-            <td>353</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Fair Trade ETC (FETC)</td>
-            <td>2535</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Soybeans (SSBS)</td>
-            <td>143</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
-          <tr>
-            <td>Soybeans (SSBS)</td>
-            <td>206</td>
-            <td>6,741.39</td>
-            <td>
-              <p className="red">Sell</p>
-            </td>
-          </tr>
+          {sellProducts.map((buyProduct, index) => {
+            return (
+              <tr key={index}>
+                <td>{getCommName(buyProduct.security_code)}</td>
+                <td>{buyProduct.units}</td>
+                <td>{formatNum(buyProduct.order_price)}</td>
+                <td>
+                  <p className="red">Sell</p>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </Wrapper>

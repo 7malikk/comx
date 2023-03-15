@@ -1,26 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AreaChart, Area } from 'recharts';
+import { LineChart, Line } from 'recharts';
+import { useMarketContext } from '../context/MarketContext';
+import { formatNum } from '../helpers';
 
 const CardsSection = () => {
+  const { clientData } = useMarketContext();
   const screenSize = window.innerWidth;
   const medium = 1024;
   const large = 1440;
   const fourK = 2560;
+
   return (
     <Wrapper>
       <div className="cash-card card">
         <h5>Cash Balance</h5>
         <div className="card-split">
           <div className="amount">
-            <h4>₦8,374,763</h4>
+            <h4>{formatNum(clientData.cash_cover?.cash_cover_available)}</h4>
             <div className="status">
               <div>Decline</div>
               <p>Monitored Monthly</p>
             </div>
           </div>
           <div className="chart">
-            <AreaChart
+            <LineChart
               width={
                 screenSize === fourK
                   ? 500
@@ -46,13 +50,13 @@ const CardsSection = () => {
                 left: 0,
                 bottom: 5,
               }}>
-              <Area
+              <Line
                 type="monotone"
                 dataKey="uv"
                 stroke="#ff3b3b"
                 fill="#ff3b3b"
               />
-            </AreaChart>
+            </LineChart>
           </div>
         </div>
       </div>
@@ -60,21 +64,21 @@ const CardsSection = () => {
         <h5>Securities Value</h5>
         <div className="card-split">
           <div className="amount">
-            <h4>₦8,374,763</h4>
+            <h4>{formatNum(clientData.wallets?.available_balance)}</h4>
             <div className="status">
-              <div>Decline</div>
+              <div className="increment">Increment</div>
               <p>Monitored Monthly</p>
             </div>
           </div>
           <div className="chart">
-            <AreaChart
+            <LineChart
               width={
                 screenSize === fourK
                   ? 500
                   : screenSize === large
                   ? 200
                   : screenSize === medium
-                  ? 150
+                  ? 118
                   : 100
               }
               height={
@@ -93,13 +97,13 @@ const CardsSection = () => {
                 left: 0,
                 bottom: 5,
               }}>
-              <Area
+              <Line
                 type="monotone"
                 dataKey="uv"
-                stroke="#ff3b3b"
-                fill="#ff3b3b"
+                stroke="#3bff4b"
+                fill="#3bff4b"
               />
-            </AreaChart>
+            </LineChart>
           </div>
         </div>
       </div>
@@ -107,14 +111,18 @@ const CardsSection = () => {
         <h5>Loan Balance</h5>
         <div className="card-split">
           <div className="amount">
-            <h4>₦8,374,763</h4>
+            <h4>
+              {formatNum(clientData.wallets?.loan_repayment_balance) === NaN
+                ? 'Loading...'
+                : formatNum(clientData.wallets?.loan_repayment_balance)}
+            </h4>
             <div className="status">
-              <div className="increment">Increment</div>
+              <div>Decline</div>
               <p>Monitored Monthly</p>
             </div>
           </div>
           <div className="chart">
-            <AreaChart
+            <LineChart
               width={
                 screenSize === fourK
                   ? 500
@@ -140,13 +148,13 @@ const CardsSection = () => {
                 left: 0,
                 bottom: 5,
               }}>
-              <Area
+              <Line
                 type="monotone"
                 dataKey="uv"
-                stroke="#3bff4b"
-                fill="#3bff4b"
+                stroke="#ff3b3b"
+                fill="#ff3b3b"
               />
-            </AreaChart>
+            </LineChart>
           </div>
         </div>
       </div>
@@ -204,7 +212,7 @@ const Wrapper = styled.section`
       .card-split {
         .amount {
           h4 {
-            font-size: x-large;
+            font-size: large;
           }
           .status {
             display: flex;

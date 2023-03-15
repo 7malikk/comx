@@ -1,99 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import Marquee from 'react-fast-marquee';
+import { useMarketContext } from '../context/MarketContext';
+import { formatNum } from '../helpers';
 
 const Marque = () => {
+  const { products, liveTicker } = useMarketContext();
+
+  const getCommName = (code) => {
+    const commodity = products.find((product) => product.code === code);
+    return `${commodity?.name} (${code})`;
+  };
   return (
     <Wrapper>
       <h5>Live&nbsp;Market</h5>
       <Marquee
         direction="left"
-        speed={40}
+        speed={100}
         gradient={false}
         className="marquee"
         loop={0}>
         <ul>
-          <li>
-            Cocoa (SCOC) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Fair Trade ETC (FETC)<p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Sorghum (SSGM) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Cocoa (SCOC) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Sorghum (SSGM) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Cocoa (SCOC) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Sorghum (SSGM) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Cocoa (SCOC) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Sorghum (SSGM) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Cocoa (SCOC) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Fair Trade ETC (FETC)<p>₦30,834.59</p>
-          </li>
-          <li>
-            Cocoa (SCOC) <p>₦30,834.59</p>
-          </li>{' '}
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Paddy Rice (SPRL) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
-          <li>
-            Soybeans (SSBS) <p>₦30,834.59</p>
-          </li>
+          {liveTicker.map((item, index) => {
+            return (
+              <li key={index}>
+                {getCommName(item?.security_code)}
+                <p>{formatNum(item?.highest_price)}</p>
+              </li>
+            );
+          })}
         </ul>
       </Marquee>
     </Wrapper>

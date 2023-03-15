@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useMarketContext } from '../context/MarketContext';
+import { formatNum } from '../helpers';
 const TradeLog = () => {
+  const { tradesData, products } = useMarketContext();
+
+  const getCommName = (code) => {
+    const commodity = products.find((product) => product.code === code);
+    return `${commodity?.name} (${code})`;
+  };
+
   return (
     <Wrapper>
       <h4>Trade Log</h4>
@@ -17,69 +26,23 @@ const TradeLog = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Soybeans (SSBS)</td>
-            <td>X-Traded</td>
-            <td>Sell </td>
-            <td>1792.65</td>
-            <td>2000</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
-          <tr>
-            <td>Paddy Rice (SPRL)</td>
-            <td>X-Traded</td>
-            <td>Sell </td>
-            <td>1792.65</td>
-            <td>86</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
-          <tr>
-            <td>Maize (SMAZ)</td>
-            <td>OTC</td>
-            <td>Buy </td>
-            <td>1792.65</td>
-            <td>2000</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
-          <tr>
-            <td>Sorghum (SSGM)</td>
-            <td>FI</td>
-            <td>Buy </td>
-            <td>1792.65</td>
-            <td>2000</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
-          <tr>
-            <td>Fair Trade ETC (FETC)</td>
-            <td>FI</td>
-            <td>Buy</td>
-            <td>1792.65</td>
-            <td>2000</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
-          <tr>
-            <td>Soybeans (SSBS)</td>
-            <td>X-Traded</td>
-            <td>Sell </td>
-            <td>1792.65</td>
-            <td>2000</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
-          <tr>
-            <td>Soybeans (SSBS)</td>
-            <td>Derivatives</td>
-            <td>Sell </td>
-            <td>1792.65</td>
-            <td>2000</td>
-            <td>17th Oct, 2020</td>
-            <td>07:38</td>
-          </tr>
+          {tradesData.map((trade, index) => {
+            return (
+              <tr key={index}>
+                <td>{getCommName(trade.security_code)}</td>
+                <td>{trade.board_type}</td>
+                <td>{trade.order_type}</td>
+                <td>{formatNum(trade.order_price)}</td>
+                <td>{trade.units}</td>
+                <td>{new Date(trade.updated).toDateString()}</td>
+                <td>
+                  {`${new Date(trade.updated).getHours() % 12 || 12}:${new Date(
+                    trade.updated
+                  ).getMinutes()}`}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </Wrapper>
@@ -117,6 +80,9 @@ const Wrapper = styled.section`
       padding-bottom: 7px;
       text-align: left;
       color: #797979;
+    }
+    tbody tr td:last-child {
+      text-align: left;
     }
   }
   @media (min-width: 1241px) {
