@@ -68,6 +68,7 @@ export const MarketProvider = ({ children }) => {
     });
 
     setLiveTicker(decryptedLive);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -149,6 +150,7 @@ export const MarketProvider = ({ children }) => {
     clientSocket.addEventListener('close', (event) => {
       console.log('ClientSocket connection closed.');
     });
+    // eslint-disable-next-line
   }, []);
 
   return (

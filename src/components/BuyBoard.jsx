@@ -18,6 +18,7 @@ const BuyBoard = () => {
 
   useEffect(() => {
     getBuyProducts();
+    // eslint-disable-next-line
   }, [tradesData]);
   return (
     <Wrapper>

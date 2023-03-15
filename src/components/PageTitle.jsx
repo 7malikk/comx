@@ -5,11 +5,8 @@ import {
   MdOutlineSettingsInputComposite,
 } from 'react-icons/md';
 import styled from 'styled-components';
-import { useMarketContext } from '../context/MarketContext';
 
 const PageTitle = () => {
-  const {} = useMarketContext();
-
   return (
     <Wrapper>
       <nav>

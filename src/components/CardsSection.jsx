@@ -111,11 +111,7 @@ const CardsSection = () => {
         <h5>Loan Balance</h5>
         <div className="card-split">
           <div className="amount">
-            <h4>
-              {formatNum(clientData.wallets?.loan_repayment_balance) === NaN
-                ? 'Loading...'
-                : formatNum(clientData.wallets?.loan_repayment_balance)}
-            </h4>
+            <h4>{formatNum(clientData.wallets?.loan_repayment_balance)}</h4>
             <div className="status">
               <div>Decline</div>
               <p>Monitored Monthly</p>

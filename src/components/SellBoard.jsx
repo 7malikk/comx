@@ -18,7 +18,7 @@ const SellBoard = () => {
 
   useEffect(() => {
     getSellProducts();
-  }, [tradesData]);
+  });
   return (
     <Wrapper>
       <h4>Sell Board</h4>
