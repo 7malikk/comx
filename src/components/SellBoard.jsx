@@ -18,7 +18,8 @@ const SellBoard = () => {
 
   useEffect(() => {
     getSellProducts();
-  });
+    // eslint-disable-next-line
+  },[]);
   return (
     <Wrapper>
       <h4>Sell Board</h4>
