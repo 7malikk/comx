@@ -19,7 +19,10 @@ export const MarketProvider = ({ children }) => {
   const [liveTicker, setLiveTicker] = useState([]);
 
   const getData = async (url) => {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`
+    }});
     const resData = await response.json();
     const { data } = resData;
     localStorage.setItem('liveTIcket', JSON.stringify(data));
@@ -34,7 +37,11 @@ export const MarketProvider = ({ children }) => {
   };
 
   const getProducts = async (url) => {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+      },
+    });
     const resData = await response.json();
     const { data } = resData;
     localStorage.setItem('productView', JSON.stringify(data));
